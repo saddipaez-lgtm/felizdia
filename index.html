@@ -1,1 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Gabi 💚</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #f5f2eb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
 
+        /* Contenedor del Árbol */
+        .tree-container {
+            width: 300px;
+            height: 300px;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiaQaumdHT2-jeN7zkpMulCeFRVPTXW63vvkY4eAcsfw&s=10');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            animation: grow 2s ease-out;
+        }
+
+        @keyframes grow {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            color: #2e7d32;
+            font-size: 1.8rem;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* Carta Vibrante */
+        .envelope-wrapper {
+            margin-top: 30px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .vibrate {
+            animation: shake 0.6s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translate(0,0); }
+            25% { transform: translate(2px, -2px) rotate(1deg); }
+            75% { transform: translate(-2px, 2px) rotate(-1deg); }
+        }
+
+        .envelope {
+            width: 110px;
+            height: 75px;
+            background: #dcc5a1;
+            border-radius: 4px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .seal {
+            width: 30px;
+            height: 30px;
+            background: #4caf50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 2px solid #388e3c;
+        }
+
+        /* Mensaje Emergente */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 300px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            z-index: 100;
+            border-top: 5px solid #4caf50;
+        }
+
+        .show { display: block !important; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        button {
+            margin-top: 20px;
+            border: none;
+            background: none;
+            color: #4caf50;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tree-container"></div>
+    <h1>GABI</h1>
+
+    <div class="envelope-wrapper vibrate" id="carta" onclick="abrir()">
+        <div class="envelope">
+            <div class="seal">💚</div>
+        </div>
+        <p style="color: #888; font-size: 12px; margin-top: 10px; text-align: center;">Toca para abrir</p>
+    </div>
+
+    <div id="modal">
+        <h2 style="color: #2e7d32; margin-top: 0;">Para Gabi</h2>
+        <p>Nuestra amistad es como este árbol: crece cada día más fuerte y no necesita flores para ser especial talvez no seamos desconocidos pero hablar contigo es reconfortante</p>
+        <p><b>¡Gracias por estar siempre!</b></p>
+        <button onclick="cerrar()">Cerrar x</button>
+    </div>
+
+    <script>
+        function abrir() {
+            document.getElementById('modal').classList.add('show');
+            document.getElementById('carta').classList.remove('vibrate');
+        }
+        function cerrar() {
+            document.getElementById('modal').classList.remove('show');
+        }
+    </script>
+</body>
+  </html>
